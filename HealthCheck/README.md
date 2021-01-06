@@ -29,5 +29,9 @@ echo $?
 ```
 ### This will add Health Check script to the cron and it will run every minute and put data to syslog:
 ```bash
-echo '* * * * * root /opt/healthcheck/pyCheck.py | logger' > /etc/cron.d/pyMonitor
+echo '* * * * * root /opt/healthcheck/pyCheck.py | logger -t healthcheck' > /etc/cron.d/pyMonitor
+```
+### Filter healcheck output from syslog
+```
+grep 'healthcheck' /var/log/syslog
 ```
